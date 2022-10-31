@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 
 @RestController
+@RequestMapping ("index")
 public class IndexController {
     // Se coloca una propiedad del tipo UserService, para poder trabajar con la logica de negocio de la aplicacion
     private UserService userService;

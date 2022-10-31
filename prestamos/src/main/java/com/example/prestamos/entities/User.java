@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "nombres")
     private String nombnres;
@@ -17,6 +17,9 @@ public class User {
     private int edad;
     @Column(name = "numeroDocumento")
     private String numeroDocumento;
+
+    @Column(name = "correoElectronico")
+    private String correoElectronico;
 
     public int getId() {
         return id;
@@ -56,5 +59,13 @@ public class User {
 
     public void setNumeroDocumento(String numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
+    }
+
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
 }
