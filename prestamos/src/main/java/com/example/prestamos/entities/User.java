@@ -10,7 +10,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(name = "nombres")
-    private String nombnres;
+    private String nombres;
     @Column(name = "apellidos")
     private String apellidos;
     @Column(name = "edad")
@@ -21,6 +21,11 @@ public class User {
     @Column(name = "correoElectronico")
     private String correoElectronico;
 
+    @ManyToOne
+    @JoinColumn(name = "tipodocumentoid")
+    private TipoDocumento tipoDocumento;
+
+
     public int getId() {
         return id;
     }
@@ -29,12 +34,12 @@ public class User {
         this.id = id;
     }
 
-    public String getNombnres() {
-        return nombnres;
+    public String getNombres() {
+        return nombres;
     }
 
-    public void setNombnres(String nombnres) {
-        this.nombnres = nombnres;
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
     public String getApellidos() {

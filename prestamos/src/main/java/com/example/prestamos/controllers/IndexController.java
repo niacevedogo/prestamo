@@ -2,7 +2,10 @@ package com.example.prestamos.controllers;
 
 
 import com.example.prestamos.entities.User;
+import com.example.prestamos.services.Response;
 import com.example.prestamos.services.UserService;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,6 +35,15 @@ public class IndexController {
         return this.userService.selectAll();
     }
 
+
+    // el metodo post nunca retona nada salvo que se use un postman
+
+    @PatchMapping("create")  //@RequestBody lo que se recibe esta en formato JSON
+    public Response createUser(@RequestBody User request){
+        // especificar que información recibe para guardarla
+        return this.userService.createUser(request);
+
+    }
 
 
 
