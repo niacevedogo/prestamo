@@ -19,15 +19,11 @@ public class TipoDocumentoService {
         return (ArrayList<TipoDocumento>) this.TipodocumentoRepository.findAll();
     }
 
-    public ArrayList<TipoDocumento> querty(TipoDocumento data2){
-        return (ArrayList<TipoDocumento>) this.TipodocumentoRepository.findbyNombre(data2.getNombre());
-    }
-
     public Response createTipoDocumento(TipoDocumento data){
 
         Response response = new Response();
         ArrayList<TipoDocumento> documentos = this.TipodocumentoRepository.findbyNombre(data.getNombre());
-        if (documentos != null && documentos.size() >= 0){
+        if (documentos != null && documentos.size() > 0){
             response.setCode(500);
             response.setMessage("Tipo de documento ya fue registrado");
             return response;

@@ -25,6 +25,9 @@ public class User {
     @JoinColumn(name = "tipodocumentoid")
     private TipoDocumento tipoDocumento;
 
+    @Column(name = "password", nullable = false, length = 200)
+    private String password;
+
 
     public int getId() {
         return id;
@@ -72,5 +75,13 @@ public class User {
 
     public void setCorreoElectronico(String correoElectronico) {
         this.correoElectronico = correoElectronico;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

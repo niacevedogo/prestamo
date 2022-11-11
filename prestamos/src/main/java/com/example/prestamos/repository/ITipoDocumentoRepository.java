@@ -14,4 +14,6 @@ public interface ITipoDocumentoRepository extends JpaRepository<TipoDocumento, I
     @Query("SELECT t FROM TipoDocumento t WHERE t.nombre=?1")
     ArrayList<TipoDocumento> findbyNombre(String nombre);
 
+
+
 }

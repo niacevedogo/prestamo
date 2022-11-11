@@ -49,6 +49,24 @@ public class IndexController {
     }
 
 
+    // {id} con el @PathVariable pone la ruta con el valor que se quiera introducir
+    @RequestMapping("getuser/{id}")
+    public User getusuraio(@PathVariable int id){
+        return this.userService.selectById(id);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public Response deleteUsuario(@PathVariable int id){
+        return this.userService.deleteUserById(id);
+    }
+
+
+    @PutMapping("update")
+    public Response updateUser (@RequestBody User request){
+        return this.userService.updateUser(request);
+    }
+
+
 
 
 }

@@ -27,8 +27,5 @@ public class TipoDocumentoController {
         return this.tipoDocumentoService.createTipoDocumento(request);
     }
 
-    @RequestMapping("lista")
-    public ArrayList<TipoDocumento> getlista(@RequestBody TipoDocumento request){
-        return this.tipoDocumentoService.querty(request);
-    }
+
 }
