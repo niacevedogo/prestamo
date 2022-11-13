@@ -67,6 +67,13 @@ public class IndexController {
     }
 
 
+//estos son servicios REST-FULL el formato de transmisión de datos esta en JSON
+
+    // las credenciales de acceso siempre se envia por POST
+    @PostMapping("auth")
+    public Response auth(@RequestBody User request){
+        return this.userService.loginUnser(request);
+    }
 
 
 }

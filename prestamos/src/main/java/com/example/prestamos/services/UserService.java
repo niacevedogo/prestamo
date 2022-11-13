@@ -27,6 +27,29 @@ public class UserService {
     public Response createUser(User data){
         // se instancia la clase
         Response response = new Response();
+
+        if (!isValidEmailAddress(data.getCorreoElectronico())){
+            response.setCode(500);
+            response.setMessage("El usuario dado no es válido");
+            return response;
+        }
+
+        ArrayList<User> existe  = this.userRepository.existeCorreo(data.getCorreoElectronico());
+        if (existe != null && existe.size() >0){
+            response.setCode(500);
+            response.setMessage("El correo electrònico ya esta en uso");
+            return response;
+        }
+
+
+        // validamos password
+        if(data.getPassword().equals("") || data.getPassword().equals(null)){
+            response.setCode(500);
+            response.setMessage("su contraseña no es valida");
+            return response;
+        }
+
+
         this.userRepository.save(data);
         response.setCode(200);
         response.setMessage("Usuario registrado exitosamente");
@@ -96,6 +119,37 @@ public class UserService {
         this.userRepository.save(exists);
         response.setCode(500);
         response.setMessage("Usuario actualizado correctamente");
+        return response;
+    }
+
+    public Response loginUnser (User data){
+        Response response = new Response();
+
+        //Logia de negocio
+        //Validamos los datos
+
+        if (!isValidEmailAddress(data.getCorreoElectronico())){
+            response.setCode(500);
+            response.setMessage("El correo es no válido");
+            return response;
+        }
+
+        // validamos password
+        if(data.getPassword().equals("") || data.getPassword().equals(null)){
+            response.setCode(500);
+            response.setMessage("su contraseña no es valida");
+            return response;
+        }
+
+        ArrayList<User> existe = this.userRepository.validaCredenciales(data.getCorreoElectronico(), data.getPassword());
+
+        if(existe != null && existe.size() > 0){
+            response.setCode(200);
+            response.setMessage("usuario autenticado exitosamente");
+            return response;
+        }
+        response.setCode(500);
+        response.setMessage("sus datos de acceso no son validos");
         return response;
     }
 

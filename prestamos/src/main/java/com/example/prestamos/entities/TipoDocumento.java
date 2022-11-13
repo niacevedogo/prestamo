@@ -10,7 +10,7 @@ public class TipoDocumento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column (name = "nombre", nullable = false, length = 30)
+    @Column (name = "nombre", length = 30) // nullable = false,
     private String nombre;
 
 
